@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="ORION" default="deploy" basedir=".">	
+	
+<!-- Properties ............................................................ -->
+    <property environment="env"/>
+    <property name="java_home" 			value="${env.JAVA_HOME}" />
+    <property name="xampp_home" 		value="C:/xampp/htdocs" />
+    <property name="webApp"         	value="${xampp_home}/orion" />
+	
+
+
+<!-- Distribute web files .................................................. -->
+    <target name="deployWeb">
+        <copy todir="${webApp}">
+            <fileset dir="C:/Users/Mårten/git_orion_fe/orion_fe">
+            </fileset>
+        </copy>
+    </target>
+</project>
