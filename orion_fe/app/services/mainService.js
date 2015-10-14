@@ -1,6 +1,12 @@
-﻿app.service('mainService', ['$http', function ($http) {
+﻿app.factory('mainService', function($http) {
 	var urlBase = 'http://localhost:8080';
-    this.getItems = function () {
-    	 return $http.get(urlBase+'/shoppinglist/1/2');
-    };
-}]);
+	var userId = '2'; //TODO
+	   return {
+	     getItems: function(referer,callback) {
+	       $http.get(urlBase+'/'+referer+'/'+userId).success(callback);
+	     },
+	     getItem: function(referer,id,callback) {
+		       $http.get(urlBase+'/'+referer+'/'+userId+'/'+id).success(callback);
+		  }
+	   }
+});
