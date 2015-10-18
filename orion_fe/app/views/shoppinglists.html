@@ -1,3 +1,9 @@
 <div data-ng-repeat="list in shoppinglists">
      <div>{{list.name}}</div>
 </div>
+     <form data-ng-controller="ShoppingListController" data-ng-submit="createList()">
+		<legend>Skapa ny shoppinglista</legend>
+		    <label>Namn</label> 
+    		<input type="text" id="name" name="name" data-ng-model="list.name" placeholder="Namn"> 
+		    <button class="data-btn btn-primary">Skapa</button>
+	</form>

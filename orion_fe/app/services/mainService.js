@@ -6,7 +6,10 @@
 	       $http.get(urlBase+'/'+referer+'/'+userId).success(callback);
 	     },
 	     getItem: function(referer,id,callback) {
-		       $http.get(urlBase+'/'+referer+'/'+userId+'/'+id).success(callback);
-		  }
+		   $http.get(urlBase+'/'+referer+'/'+userId+'/'+id).success(callback);
+		  },
+		  insertItem: function (referer,callback, postjsonobj) {
+	          $http.post(urlBase+'/'+referer+'/'+userId, postjsonobj);
+	      }
 	   }
 });

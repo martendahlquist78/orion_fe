@@ -1,10 +1,23 @@
-﻿app.controller('ShoppingListController', function ($scope, mainService) {
+﻿app.controller('ShoppingListController', function ($scope, mainService,$routeParams) {
 	var typeUrl = 'shoppinglist';
-	mainService.getItems(typeUrl,function(data) {
-		 $scope.shoppinglists = data;
-	});
-	//TODO hur göra för att inte båda dessa metoder ska köras?
-	mainService.getItem(typeUrl,1,function(data) {
-	     $scope.list = data;
-	});
+	if ($routeParams.listId) {
+		mainService.getItem(typeUrl,$routeParams.listId,function(data) {
+			 $scope.shoppinglists = data; 
+		});
+    }
+	else{
+		mainService.getItems(typeUrl,function(data) {
+			 $scope.shoppinglists = data;
+		});
+	}
+   function ShoppingListController($scope) {
+	   $scope.list = {};
+	    $scope.createList = function() {
+	    	mainService.insertItem(typeUrl,function(data) {
+				  
+			},$scope.list);
+	    }
+    }
 });
+
+//data för rad 7 och 12 kommer att ha olika innehåll, därför två metoder.
