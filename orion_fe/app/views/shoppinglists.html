@@ -1,9 +1,14 @@
 <div data-ng-repeat="list in shoppinglists">
      <div>{{list.name}}</div>
 </div>
-     <form data-ng-controller="ShoppingListController" data-ng-submit="createList()">
-		<legend>Skapa ny shoppinglista</legend>
-		    <label>Namn</label> 
-    		<input type="text" id="name" name="name" data-ng-model="list.name" placeholder="Namn"> 
-		    <button class="data-btn btn-primary">Skapa</button>
-	</form>
+<div data-ng-controller="ShoppingListController">
+  <form name="listForm" data-ng-submit="createList()">
+    <label>Namn:
+      <input type="text" name="userName"
+      		placeholder="Ange ett namn på listan"
+             data-ng-model="list.name"
+             data-ng-model-options="{ getterSetter: true }" />
+    </label>
+    <button>Skapa</button>
+  </form>
+</div>

@@ -10,14 +10,11 @@
 			 $scope.shoppinglists = data;
 		});
 	}
-   function ShoppingListController($scope) {
-	   $scope.list = {};
-	    $scope.createList = function() {
-	    	mainService.insertItem(typeUrl,function(data) {
+	$scope.createList = function(){
+		 	mainService.insertItem(typeUrl,function(data) {
 				  
 			},$scope.list);
-	    }
-    }
+	}
 });
 
 //data för rad 7 och 12 kommer att ha olika innehåll, därför två metoder.
