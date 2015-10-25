@@ -11,10 +11,10 @@
 		});
 	}
 	$scope.createList = function(){
-		 	mainService.insertItem(typeUrl,function(data) {
-				  
+		 	mainService.insertItem(typeUrl,function(data){		  
 			},$scope.list);
 	}
+    $scope.statuses = [{name:'Aktiv',value:'active'},{name:'Inaktiv',value:'inactive'}];
 });
 
 //data för rad 7 och 12 kommer att ha olika innehåll, därför två metoder.
