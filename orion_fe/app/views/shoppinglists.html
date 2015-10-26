@@ -4,10 +4,10 @@
 <div data-ng-controller="ShoppingListController">
   <form name="listForm" data-ng-submit="createList()">
     <label>Namn:</label>
-      <input type="text" name="userName" placeholder="Ange ett namn på listan" data-ng-model="list.name" />
+      <input type="text" name="userName" placeholder="Ange ett namn pÃ¥ listan" data-ng-model="list.name" />
       <label>Status:</label>
      <select data-ng-model="list.status">
-      <option value="">-- Välj status --</option>
+      <option value="">-- VÃ¤lj status --</option>
        <option data-ng-repeat="status in statuses" value="{{status.value}}">{{status.name}}</option>
     </select>
     <button>Skapa</button>
