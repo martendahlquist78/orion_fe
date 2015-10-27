@@ -9,7 +9,7 @@
 		   $http.get(urlBase+'/'+referer+'/'+token+'/'+id).success(callback);
 		  },
 		  insertItem: function (referer,callback, postjsonobj) {
-	          $http.post(urlBase+'/'+referer+'/create/'+token, postjsonobj);
+	          $http.post(urlBase+'/'+referer+'/create/'+token, postjsonobj).success(callback);
 	      }
 	   }
 });

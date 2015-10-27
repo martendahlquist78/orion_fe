@@ -11,7 +11,8 @@
 		});
 	}
 	$scope.createList = function(){
-		 	mainService.insertItem(typeUrl,function(data){		  
+		 	mainService.insertItem(typeUrl,function(data){	
+		 		
 			},$scope.list);
 	}
     $scope.statuses = [{name:'Aktiv',value:'1'},{name:'Inaktiv',value:'0'}];
