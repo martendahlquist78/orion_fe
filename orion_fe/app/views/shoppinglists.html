@@ -1,7 +1,4 @@
-<div data-ng-repeat="list in shoppinglists">
-     <div>{{list.name}}</div>
-</div>
-<div data-ng-controller="ShoppingListController">
+<div data-ng-controller="ShoppingListsController">
   <form name="listForm" data-ng-submit="createList()">
     <label>Namn:</label>
       <input type="text" name="userName" placeholder="Ange ett namn på listan" data-ng-model="list.name" />
@@ -12,4 +9,7 @@
     </select>
     <button>Skapa</button>
   </form>
+  <div data-ng-repeat="list in shoppinglists">
+     <div>{{list.name}}</div>
+</div>
 </div>

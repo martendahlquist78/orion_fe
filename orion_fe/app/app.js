@@ -3,7 +3,7 @@ app.config(function ($routeProvider) {
     $routeProvider
         .when('/shoppinglists',
             {
-                controller: 'ShoppingListController',
+                controller: 'ShoppingListsController',
                 templateUrl: 'app/views/shoppinglists.html'
             })
         .when('/shoppinglists/:listId',
