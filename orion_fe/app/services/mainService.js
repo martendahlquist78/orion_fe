@@ -12,7 +12,7 @@
 	        $http.post(urlBase+'/'+referer+'/create/'+token, postjsonobj).success(callback).error(errorcallback);
 	     },
 	     deleteItem: function(referer, callback,errorcallback,deletejsonobj){
-	    	 $http.delete(urlBase+'/'+referer+'/'+token, postjsonobj).success(callback).error(errorcallback); 
+	    	 $http.delete(urlBase+'/'+referer+'/'+token, deletejsonobj).success(callback).error(errorcallback); 
 	     }
 	  }
 });

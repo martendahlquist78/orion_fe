@@ -1,15 +1,16 @@
 <div data-ng-controller="ShoppingListsController">
   <form name="listForm" data-ng-submit="createList()">
-    <label>Namn:</label>
+    <h3>Namn:</h3>
       <input type="text" name="userName" placeholder="Ange ett namn på listan" data-ng-model="list.name" />
-      <label>Status:</label>
+      <h3>Status:</h3>
      <select data-ng-model="list.status">
       <option value="">-- Välj status --</option>
        <option data-ng-repeat="status in statuses" value="{{status.value}}">{{status.name}}</option>
     </select>
-    <button>Skapa</button>
+    <button class="btn btn-info">Skapa</button>
   </form>
   <div data-ng-repeat="list in shoppinglists">
-     <div>{{list.name}} {{list.status}}&nbsp;&nbsp; <a data-ng-href='#' data-ng-click='deleteList()' data-ng-confirm-click="Är du säker på att du vill ta bort listan?">Ta bort</a></div>
+     <div id="listitem">{{list.name}} {{list.status}}&nbsp;&nbsp;<a id="deletebutton" style="display:none" class="btn btn-primary btn-xs glyphicon glyphicon-remove" href="#/shoppinglists" ng-confirm-message="Är du säker på att du vill ta bort listan?" 
+     ng-confirm-click="deleteList()""></a></div>
 </div>
 </div>
