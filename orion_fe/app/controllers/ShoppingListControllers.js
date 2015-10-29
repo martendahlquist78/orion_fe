@@ -12,6 +12,16 @@ controller('ShoppingListsController', function ($scope, mainService, $routeParam
 	mainService.getItems(typeUrl,function(data) {
 			 $scope.shoppinglists = data;
 	});
+	$scope.deleteList = function(){
+		mainService.deleteItem(typeUrl,
+	 	function(data){	
+
+		},
+		function(error){	
+			 
+		},
+		$scope.list);
+	}
 	$scope.createList = function(){
 			mainService.insertItem(typeUrl,
 		 	function(data){	

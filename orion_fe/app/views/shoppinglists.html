@@ -10,6 +10,6 @@
     <button>Skapa</button>
   </form>
   <div data-ng-repeat="list in shoppinglists">
-     <div>{{list.name}}</div>
+     <div>{{list.name}} {{list.status}}&nbsp;&nbsp; <a data-ng-href='#' data-ng-click='deleteList()' data-ng-confirm-click="Är du säker på att du vill ta bort listan?">Ta bort</a></div>
 </div>
 </div>

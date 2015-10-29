@@ -9,8 +9,10 @@
 		   $http.get(urlBase+'/'+referer+'/'+token+'/'+id).success(callback);
 		  },
 		 insertItem: function (referer,callback, errorcallback, postjsonobj) {
-			 console.log(postjsonobj);
 	        $http.post(urlBase+'/'+referer+'/create/'+token, postjsonobj).success(callback).error(errorcallback);
+	     },
+	     deleteItem: function(referer, callback,errorcallback,deletejsonobj){
+	    	 $http.delete(urlBase+'/'+referer+'/'+token, postjsonobj).success(callback).error(errorcallback); 
 	     }
 	  }
 });
