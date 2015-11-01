@@ -9,8 +9,7 @@
     </select>
     <button class="btn btn-info">Skapa</button>
   </form>
-  <div data-ng-repeat="list in shoppinglists">
-     <div id="listitem">{{list.name}} {{list.status}}&nbsp;&nbsp;<a id="deletebutton" style="display:none" class="btn btn-primary btn-xs glyphicon glyphicon-remove" href="#/shoppinglists" ng-confirm-message="Är du säker på att du vill ta bort listan?" 
-     ng-confirm-click="deleteList()""></a></div>
+  <div data-ng-repeat="list in shoppinglists" data-ng-controller="ModalController">
+     <div id="listitem">{{list.name}} {{list.status}}&nbsp;&nbsp;<button type="button" class="btn btn-default" data-ng-click="open()">Open me!</button></div>
 </div>
 </div>

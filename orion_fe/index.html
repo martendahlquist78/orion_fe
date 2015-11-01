@@ -4,20 +4,30 @@
     <title>ORION::Dynamisk shoppinglista</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href="Content/css/bootstrap.min.css" rel="stylesheet">
+	<link href="Content/css/style.css" rel="stylesheet">
 </head>
 <body>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-route.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" 
-		integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous">
-	</script>
-	<script type="text/javascript" src="Content/js/main.js"></script>
+	<script src="Content/js/ui-bootstrap-tpls-0.14.3.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular-animate.min.js"></script>
     <!-- App libs -->
     <script src="app/app.js"></script>
     <script src="app/controllers/ShoppingListControllers.js"></script>
+    <script src="app/controllers/ModalControllers.js"></script>
     <script src="app/services/mainService.js"></script>
-    <div data-ng-view></div>
-
+    <div data-ng-view>
+    </div>
+	<div data-ng-controller="ModalController">
+    <script type="text/ng-template" id="modalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">I'm a modal!</h3>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+</div>
 </body>
 </html>
