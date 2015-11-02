@@ -21,12 +21,15 @@ controller('ModalInstanceController', function ($scope, $modalInstance) {
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     };
+    $scope.hover = function(item) {
+        return item.showDelete = ! item.showDelete;
+    };
 }).
 controller('DatepickerController', function ($scope) {
 	  $scope.today = function() {
 	    $scope.dt = new Date();
 	  };
-	  $scope.today();
+
 
 	  $scope.clear = function () {
 	    $scope.dt = null;
@@ -55,7 +58,7 @@ controller('DatepickerController', function ($scope) {
 	    startingDay: 1
 	  };
 
-	  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+	  $scope.formats = ['dd MMMM'];
 	  $scope.format = $scope.formats[0];
 
 	  $scope.status = {

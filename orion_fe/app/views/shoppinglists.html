@@ -13,8 +13,8 @@
     <div class="quarterwrapper">
     <div data-ng-controller="DatepickerController">
             <p class="input-group">
-              <input type="text" placeholder="Datum för påminnelse" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" 
-              datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="Stäng" />
+              <input type="text" placeholder="Påminnelse" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" 
+              datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="Stäng" clear-text="Rensa" current-text="Idag"/>
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" data-ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
@@ -28,14 +28,14 @@
   </form>
  </div>
   <div style="width:40em">	
-	 <h3>Shoppinglistor&nbsp;&nbsp;<span class="badge">{{shoppinglists.length}}</span></h3>
+	 <h3>Shoppinglistor&nbsp;&nbsp;<span class="badge">{{filtered.length }}</span></h3>&nbsp;&nbsp;&nbsp;<a href="#/shoppinglists" data-ng-click="filter = {status:1,status:0}">Visa inaktiva</a>
 	<div class="list-group">
-	<span data-ng-repeat="list in shoppinglists" data-ng-controller="ModalController" class="list-group-item">
+	<span data-ng-repeat="list in filtered = (shoppinglists | filter: filter)" data-ng-mouseenter="hover(list)" data-ng-mouseleave="hover(list)" data-ng-controller="ModalController" class="list-group-item">
       <a href="#/shoppinglists/{{list.id}}">
         <h4 class="list-group-item-heading">{{list.name}}&nbsp;&nbsp;</h4>
         <p class="list-group-item-text">{{list.created}}</p>
       </a>
-      <span style="color:#d9230f;float:right" class="glyphicon glyphicon-trash" data-ng-click="open()"></span>
+      <span style="color:#d9230f;float:right" data-ng-show="list.showDelete" class="glyphicon glyphicon-trash" data-ng-click="open()"></span>
       </span>
     </div>
 </div>

@@ -10,13 +10,34 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-route.min.js"></script>
 	<script src="Content/js/ui-bootstrap-tpls-0.14.3.min.js"></script>
+	<script src="http://code.angularjs.org/1.0.8/i18n/angular-locale_sv-se.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular-animate.min.js"></script>
     <!-- App libs -->
     <script src="app/app.js"></script>
     <script src="app/controllers/ShoppingListControllers.js"></script>
     <script src="app/controllers/ModalControllers.js"></script>
     <script src="app/services/mainService.js"></script>
-    <div data-ng-view>
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">ORION</a>
+    </div>
+    <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#/shoppinglists">Shoppinglistor <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Butiker</a></li>
+		<li><a href="#">Varor</a></li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" style="width:15em" placeholder="Sök butik eller shoppinglista">
+        </div>
+        <button type="submit" class="btn btn-default">Sök</button>
+      </form>
+    </div>
+  </div>
+</nav>
+    <div data-ng-view style="margin-left:2em">
     </div>
 	<div data-ng-controller="ModalController">
     <script type="text/ng-template" id="modalContent.html">
