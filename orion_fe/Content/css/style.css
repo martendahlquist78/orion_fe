@@ -1,1 +1,8 @@
 .nav, .pagination, .carousel, .panel-title a span { cursor: pointer; text-decoration:none}
+.wrapper{
+	width: 100%;	
+}
+.quarterwrapper{
+	width: 25%;
+	float: left;
+}

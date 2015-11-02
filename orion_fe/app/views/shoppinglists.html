@@ -1,10 +1,16 @@
 <div data-ng-controller="ShoppingListsController" style="margin-left:3em">
-  <form name="listForm" data-ng-submit="createList()" style="display: inline-block;vertical-align:top;">
+  <form name="listForm" data-ng-submit="createList()">
+  <div class="wrapper">
+  	<div class="quarterwrapper">
       <input type="text" name="userName" class="form-control" style="max-width: 500px;" placeholder="Ange ett namn på listan" data-ng-model="list.name" />
+     </div>
+     <div class="quarterwrapper">
      <select class="form-control" style="max-width:200px" data-ng-model="list.status">
       <option value="">  Välj status  </option>
        <option data-ng-repeat="status in statuses" value="{{status.value}}">{{status.name}}</option>
     </select>
+    </div>
+    <div class="quarterwrapper">
     <div data-ng-controller="DatepickerController">
             <p class="input-group">
               <input type="text" placeholder="Datum för påminnelse" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" 
@@ -14,8 +20,13 @@
               </span>
             </p>	
      </div>
-    <button class="btn btn-default">Skapa</button>
+     </div>
+     <div class="quarterwrapper">
+    	<button class="btn btn-default">Skapa</button>
+    </div>
+    </div>
   </form>
+ </div>
   <div style="width:40em">	
 	 <h3>Shoppinglistor&nbsp;&nbsp;<span class="badge">{{shoppinglists.length}}</span></h3>
 	<div class="list-group">
@@ -27,7 +38,6 @@
       <span style="color:#d9230f;float:right" class="glyphicon glyphicon-trash" data-ng-click="open()"></span>
       </span>
     </div>
-</div>
 </div>
 
 
