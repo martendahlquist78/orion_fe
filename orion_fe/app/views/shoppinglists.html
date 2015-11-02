@@ -1,12 +1,19 @@
 <div data-ng-controller="ShoppingListsController" style="margin-left:3em">
-  <form name="listForm" data-ng-submit="createList()">
-    <h3>Namn:</h3>
+  <form name="listForm" data-ng-submit="createList()" style="display: inline-block;vertical-align:top;">
       <input type="text" name="userName" class="form-control" style="max-width: 500px;" placeholder="Ange ett namn på listan" data-ng-model="list.name" />
-    <h3>Status:</h3>
      <select class="form-control" style="max-width:200px" data-ng-model="list.status">
-      <option value="">-- Välj status --</option>
+      <option value="">  Välj status  </option>
        <option data-ng-repeat="status in statuses" value="{{status.value}}">{{status.name}}</option>
     </select>
+    <div data-ng-controller="DatepickerController">
+            <p class="input-group">
+              <input type="text" placeholder="Datum för påminnelse" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" 
+              datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="Stäng" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" data-ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>	
+     </div>
     <button class="btn btn-default">Skapa</button>
   </form>
   <div style="width:40em">	
