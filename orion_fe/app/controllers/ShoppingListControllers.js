@@ -12,10 +12,10 @@ controller('ShoppingListsController', function ($scope, mainService, $routeParam
 	mainService.getItems(typeUrl,function(data) {
 			 $scope.shoppinglists = data;
 	});
-	$scope.deleteList = function(){
+	$scope.deleteList = function(item){
 		mainService.deleteItem(typeUrl,
 	 	function(data){	
-
+			
 		},
 		function(error){	
 			 

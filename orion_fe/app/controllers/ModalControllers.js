@@ -1,17 +1,15 @@
 app.controller('ModalController', function ($scope, $uibModal, $log) {
     $scope.animationsEnabled = true;
-    $scope.open = function (size) {
+    $scope.confirm = function (item) {
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'modalContent.html',
             controller: 'ModalInstanceController',
-            size: size
         });
     };
     $scope.toggleAnimation = function () {
         $scope.animationsEnabled = !$scope.animationsEnabled;
     };
-
 }).
 controller('ModalInstanceController', function ($scope, $modalInstance) {
     $scope.ok = function () {
@@ -21,15 +19,12 @@ controller('ModalInstanceController', function ($scope, $modalInstance) {
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     };
-    $scope.hover = function(item) {
-        return item.showDelete = ! item.showDelete;
-    };
 }).
 controller('DatepickerController', function ($scope) {
 	  $scope.today = function() {
 	    $scope.dt = new Date();
 	  };
-
+	  $scope.today();
 
 	  $scope.clear = function () {
 	    $scope.dt = null;
@@ -58,7 +53,7 @@ controller('DatepickerController', function ($scope) {
 	    startingDay: 1
 	  };
 
-	  $scope.formats = ['dd MMMM'];
+	  $scope.formats = ['dd/MM'];
 	  $scope.format = $scope.formats[0];
 
 	  $scope.status = {

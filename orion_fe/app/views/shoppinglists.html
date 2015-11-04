@@ -1,8 +1,8 @@
-<div data-ng-controller="ShoppingListsController" style="margin-left:3em">
+<div data-ng-controller="ShoppingListsController" style="margin-left:3em;">
   <form name="listForm" data-ng-submit="createList()">
   <div class="wrapper">
   	<div class="quarterwrapper">
-      <input type="text" name="userName" class="form-control" style="max-width: 500px;" placeholder="Ange ett namn på listan" data-ng-model="list.name" />
+      <input type="text" name="userName" class="form-control" style="max-width: 500px;" placeholder="Ange ett namn" data-ng-model="list.name" />
      </div>
      <div class="quarterwrapper">
      <select class="form-control" style="max-width:200px" data-ng-model="list.status">
@@ -11,34 +11,37 @@
     </select>
     </div>
     <div class="quarterwrapper">
-	    <div data-ng-controller="DatepickerController">
+    <fieldset>
+    	<legend class="pointer" data-ng-click="showme=!showme">Påminnelse <i class="glyphicon glyphicon-time"></i></legend>
+	    <div data-ng-controller="DatepickerController" data-ng-show="showme">
 	            <p class="input-group">
-	              <input type="text" placeholder="Påminnelse" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" 
+	              <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" 
 	              datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="Stäng" clear-text="Rensa" current-text="Idag"/>
 	              <span class="input-group-btn">
 	                <button type="button" class="btn btn-default" data-ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 	              </span>
 	            </p>	
 	     </div>
-	     <div ng-controller="TimepickerController">
+     	     <div ng-controller="TimepickerController" data-ng-show="showme">
   				<uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
-		</div>
-     </div>
+			</div>
+	</fieldset>
+	</div>
      <div class="quarterwrapper">
     	<button class="btn btn-default">Skapa</button>
     </div>
     </div>
   </form>
  </div>
-  <div style="width:40em">	
+  <div style="width:40em;">	
 	 <h3>Shoppinglistor&nbsp;&nbsp;<span class="badge">{{filtered.length }}</span></h3>&nbsp;&nbsp;&nbsp;<a href="#/shoppinglists" data-ng-click="filter = {status:1,status:0}">Visa inaktiva</a>
-	<div class="list-group">
-	<span data-ng-repeat="list in filtered = (shoppinglists | filter: filter)" data-ng-mouseenter="hover(list)" data-ng-mouseleave="hover(list)" data-ng-controller="ModalController" class="list-group-item">
+	<div class="list-group" data-ng-controller="ModalController">
+	<span data-ng-repeat="list in filtered = (shoppinglists | filter: filter )" class="list-group-item" data-ng-mouseenter="delete=true" data-ng-mouseleave="delete=false">
       <a href="#/shoppinglists/{{list.id}}">
-        <h4 class="list-group-item-heading">{{list.name}}&nbsp;&nbsp;</h4>
+        <h4 class="list-group-item-heading" style="width:70%">{{list.name}}&nbsp;&nbsp;</h4>
         <p class="list-group-item-text">{{list.created}}</p>
       </a>
-      <span style="color:#d9230f;float:right" data-ng-show="list.showDelete" class="glyphicon glyphicon-trash" data-ng-click="open()"></span>
+            <span style="color:#d9230f;float:right;z-index:10;margin-top:-20px" data-ng-show="delete" data-ng-hide="!delete" class="pointer glyphicon glyphicon-trash" data-ng-click="confirm(list)"></span>
       </span>
     </div>
 </div>
