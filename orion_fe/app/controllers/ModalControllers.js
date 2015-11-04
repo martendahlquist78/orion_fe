@@ -80,7 +80,6 @@ controller('DatepickerController', function ($scope) {
 	        status: 'partially'
 	      }
 	    ];
-
 	  $scope.getDayClass = function(date, mode) {
 	    if (mode === 'day') {
 	      var dayToCheck = new Date(date).setHours(0,0,0,0);
@@ -93,8 +92,27 @@ controller('DatepickerController', function ($scope) {
 	        }
 	      }
 	    }
-
 	    return '';
 	  };
-	});
+	}).
+	controller('TimepickerController', function ($scope, $log) {
+		  $scope.mytime = new Date();
+		  $scope.hstep = 1;
+		  $scope.mstep = 15;
+		  $scope.options = {
+		    hstep: [1, 2, 3],
+		    mstep: [1, 5, 10, 15, 25, 30]
+		  };
+		  $scope.ismeridian = false;
+		  $scope.update = function() {
+		    var d = new Date();
+		    d.setHours( 14 );
+		    d.setMinutes( 0 );
+		    $scope.mytime = d;
+		  };
+
+		  $scope.changed = function () {
+		    $log.log('Time changed to: ' + $scope.mytime);
+		  };
+});
 
