@@ -1,26 +1,4 @@
-app.controller('ModalController', function ($scope, $uibModal, $log) {
-    $scope.animationsEnabled = true;
-    $scope.confirm = function (item) {
-        var modalInstance = $uibModal.open({
-            animation: $scope.animationsEnabled,
-            templateUrl: 'modalContent.html',
-            controller: 'ModalInstanceController',
-        });
-    };
-    $scope.toggleAnimation = function () {
-        $scope.animationsEnabled = !$scope.animationsEnabled;
-    };
-}).
-controller('ModalInstanceController', function ($scope, $modalInstance) {
-    $scope.ok = function () {
-        $modalInstance.close();
-    };
-
-    $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
-    };
-}).
-controller('DatepickerController', function ($scope) {
+app.controller('DatepickerController', function ($scope) {
 	  $scope.today = function() {
 	    $scope.dt = new Date();
 	  };
@@ -109,5 +87,40 @@ controller('DatepickerController', function ($scope) {
 		  $scope.changed = function () {
 		    $log.log('Time changed to: ' + $scope.mytime);
 		  };
-});
+}).
+directive('ngReallyClick', ['$uibModal',
+     function($uibModal) {
+       var ModalInstanceCtrl = function($scope, $modalInstance) {
+         $scope.ok = function() {
+           $modalInstance.close();
+         };
+         $scope.cancel = function() {
+           $modalInstance.dismiss('cancel');
+         };
+       };
+       return {
+         restrict: 'A',
+         scope:{
+           ngReallyClick:"&",
+           item:"="
+         },
+         link: function(scope, element, attrs) {
+           element.bind('click', function() {
+             var message = attrs.ngReallyMessage || "Är du säker?";
 
+             var modalHtml = '<div class="modal-body">' + message + '</div>';
+             modalHtml += '<div class="modal-footer"><button class="btn btn-default" ng-click="ok()">Ok</button><button class="btn btn-default" ng-click="cancel()">Avbryt</button></div>';
+
+             var modalInstance = $uibModal.open({
+               template: modalHtml,
+               controller: ModalInstanceCtrl
+             });
+             modalInstance.result.then(function() {
+               scope.ngReallyClick({item:scope.item}); 
+             }, function() {
+             });
+           });
+         }
+       }
+     }
+   ]);
