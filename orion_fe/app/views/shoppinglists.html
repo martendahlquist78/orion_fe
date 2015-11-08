@@ -36,10 +36,11 @@
   <div style="width:40em;">	
 	 <h3>Shoppinglistor&nbsp;&nbsp;<span class="badge">{{filtered.length }}</span></h3>&nbsp;&nbsp;&nbsp;<a href="#/shoppinglists" data-ng-click="filter = {status:1,status:0}">Visa inaktiva</a>
 	<div class="list-group">
-	<span data-ng-repeat="list in filtered = (shoppinglists | filter: filter )" class="list-group-item" data-ng-mouseenter="delete=true" data-ng-mouseleave="delete=false">
+	<span data-ng-repeat="list in filtered = (shoppinglists | filter: filter || 1 )" class="list-group-item" data-ng-mouseenter="delete=true" data-ng-mouseleave="delete=false">
       <a href="#/shoppinglists/{{list.id}}">
         <h4 class="list-group-item-heading" style="width:70%">{{list.name}}&nbsp;&nbsp;</h4>
-        <p class="list-group-item-text">{{list.created}}</p>
+        <p data-ng-show="list.reminder != null" class="list-group-item-text"><i class="glyphicon glyphicon-time"></i>&nbsp;{{list.reminder}}</p>
+        <p data-ng-show="list.created != null" class="list-group-item-text"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;{{list.created}}</p>
       </a>
             <a style="color:#d9230f;float:right;z-index:10;margin-top:-20px" data-ng-show="delete" data-ng-hide="!delete" class="pointer glyphicon glyphicon-trash"
              data-ng-really-message="Är du säker på att du vill ta bort listan?" data-ng-really-click="deleteList(list)" item="list"></a>
