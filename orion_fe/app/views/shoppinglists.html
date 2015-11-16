@@ -42,9 +42,10 @@
 	<span data-ng-repeat="list in filtered = (shoppinglists | filter: filter || 1 )" class="list-group-item" data-ng-mouseenter="delete=true" data-ng-mouseleave="delete=false">
       <a href="#/shoppinglists/{{list.id}}">
         <h4 class="list-group-item-heading" style="width:70%">{{list.name}}&nbsp;&nbsp;</h4>
-        <p data-ng-show="list.reminder != null" class="grey_italic_11"><i class="glyphicon glyphicon-time"></i>&nbsp;{{list.reminder}}</p>
-        <p data-ng-show="list.created != null" class="grey_italic_11"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;{{list.created}}</p>
-        <p data-ng-show="list.users.length > 0" class="grey_italic_11"><i class="glyphicon glyphicon-user"></i>&nbsp;Delas med {{list.users.length}} användare</p>
+         <p data-ng-show="list.created != null" class="grey_italic_11" title="Skapad {{list.created}}"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;{{list.created}}</p>
+        <p data-ng-show="list.reminder != null" class="grey_italic_11" title="Påminnelse {{list.reminder}}"><i class="glyphicon glyphicon-time"></i>&nbsp;{{list.reminder}}</p>
+        <p data-ng-show="list.users.length > 0" class="grey_italic_11" title="Delas med {{list.users.length}} användare"><i class="glyphicon glyphicon-user"></i>&nbsp;{{list.users.length}}</p>
+        <p data-ng-show="list.grosseryCount > 0" class="grey_italic_11" title="{{list.grosseryCount}} poster i listan"><i class="glyphicon glyphicon-th-list"></i>&nbsp;{{list.grosseryCount}}</p>
       </a>
        <a style="color:#d9230f;float:right;z-index:10;margin-top:-20px" data-ng-show="delete" data-ng-hide="!delete" class="pointer glyphicon glyphicon-trash"
 		data-ng-really-message="Är du säker på att du vill ta bort listan?" data-ng-really-click="deleteList(list)" item="list"></a>

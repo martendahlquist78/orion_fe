@@ -1,4 +1,8 @@
-.nav, .pagination, .carousel, .panel-title a span { cursor: pointer; text-decoration:none}
+a:hover{ 
+	cursor: pointer;
+	text-decoration:none;
+	color:#444444;
+}
 .wrapper{
 	width: 100%;
 }
